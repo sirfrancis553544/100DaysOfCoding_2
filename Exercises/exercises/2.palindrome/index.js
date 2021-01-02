@@ -12,4 +12,12 @@ function palindrome(str) {
   return str === reversed;
 }
 
+//!solution 2
+function palindrome(str) {
+  return str.split("").every((char, i) => {
+    // -1 is to get the element on the opposite end of the array
+    return char === str[str.length - i - 1];
+  });
+}
+
 module.exports = palindrome;
