@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Button, Form, Container, Header } from "semantic-ui-react";
 import "./App.css";
+import axios from "axios";
 
 export default class App extends Component {
-  // create states for our four form fields in the constructor
   constructor(props) {
     super(props);
 
@@ -15,15 +15,22 @@ export default class App extends Component {
     };
   }
 
-  // changeHandler method to track the change in the input values.
   changeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  // onSubmit handler. On the form tag, add the onSubmit event and assign the submitHandler method
   submitHandler = (e) => {
     e.preventDefault();
     console.log(this.state);
+
+    axios
+      .post(
+        "https://sheet.best/api/sheets/0c757e48-412d-4229-8660-2f25799fc449",
+        this.state
+      )
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   render() {
@@ -46,7 +53,7 @@ export default class App extends Component {
             <label>Age</label>
             <input
               placeholder="Enter your age"
-              type="text"
+              type="number"
               name="age"
               value={age}
               onChange={this.changeHandler}
@@ -56,7 +63,7 @@ export default class App extends Component {
             <label>Salary</label>
             <input
               placeholder="Enter your salary"
-              type="text"
+              type="number"
               name="salary"
               value={salary}
               onChange={this.changeHandler}
