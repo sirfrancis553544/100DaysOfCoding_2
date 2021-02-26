@@ -18,13 +18,15 @@ nav h1 {
   margin: 0;
 }
 
-nav a {
+nav a{
   color: white;
   text-decoration: none;
   background: #36cca2;
   padding: 10px;
   border-radius: 10px;
 }
+
+
 
 form {
   max-width: 500px;
